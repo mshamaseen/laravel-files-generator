@@ -1,0 +1,30 @@
+{
+    "name": "shamaseen/laravel-files-generator",
+    "description": "Generate any kind of File/s from stubs with only a single command, literally, ANY TYPE.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "shamaseen",
+            "email": "m.shamaseen@outlook.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shamaseen\\Generator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Shamaseen\\Generator\\GeneratorServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}
