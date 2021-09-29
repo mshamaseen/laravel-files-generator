@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/mshamaseen/laravel-files-generator.svg?branch=main)](https://app.travis-ci.com/mshamaseen/laravel-files-generator)
+
 # laravel-files-generator
 Generate any kind of file/s from stubs with only a single command, literally, ANY KIND.
 
