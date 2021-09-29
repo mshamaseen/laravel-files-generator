@@ -40,7 +40,6 @@ class Generator
         return $this->basePath."/".$path;
     }
 
-
     /**
      * @param $variable
      * @param $value
