@@ -29,6 +29,7 @@ class Generator
     }
 
     /**
+     * Get the base path from the config file or the cache if available
      * @param $path
      * @return string
      */
@@ -41,6 +42,8 @@ class Generator
     }
 
     /**
+     * Replace strings in the generated file
+     *
      * @param $variable
      * @param $value
      * @return $this
@@ -52,6 +55,7 @@ class Generator
     }
 
     /**
+     * Specify the stub file, this is the first method to be run
      * @param $stubPath
      * @return $this
      */
@@ -62,6 +66,7 @@ class Generator
     }
 
     /**
+     * Validate the required parameters on a custom configuration
      * @param $config
      * @throws Exception
      */
@@ -75,6 +80,8 @@ class Generator
     }
 
     /**
+     * Generate the files from a config file
+     *
      * @param $configPath
      * @throws Exception
      */
@@ -105,6 +112,7 @@ class Generator
     }
 
     /**
+     * Set the output of single generated file
      * @param $path
      * @return bool
      */
@@ -117,6 +125,8 @@ class Generator
     }
 
     /**
+     * Generate the folder with the file
+     *
      * @param $dir
      * @param $contents
      * @return false|int

@@ -1,7 +1,13 @@
-[![Build Status](https://app.travis-ci.com/mshamaseen/laravel-files-generator.svg?branch=main)](https://app.travis-ci.com/mshamaseen/laravel-files-generator)
-
 # laravel-files-generator
 Generate any kind of file/s from stubs with only a single command, literally, ANY KIND.
+
+<br>
+<br>
+
+<p align="center">
+<a href="https://app.travis-ci.com/mshamaseen/laravel-files-generator"><img src="https://app.travis-ci.com/mshamaseen/laravel-files-generator.svg?branch=main" alt="Build"></a>
+<a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="Licence"></a>
+</p>
 
 ## Quickstart
 
