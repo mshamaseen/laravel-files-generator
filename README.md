@@ -13,7 +13,7 @@ Generate any kind of file/s from stubs with only a single command, literally, AN
 
 <br>
 
-### To generate a **single file:** 
+### Generate a single file: 
 
 From command line:
 ```php
@@ -29,7 +29,7 @@ FilesGenerator::stub('PathToYourStubFile.extension')
 ```
 <br>
 
-### To generate **multiple files:**
+### Generate multiple files:
 
 From command line:
 ```php
@@ -44,7 +44,7 @@ FilesGenerator::fromConfigFile('configPath.php');
 
 <br>
 
-### To **remove generated files** from a config file:
+### Remove generated files from a config file:
 
 From command line:
 ```php
