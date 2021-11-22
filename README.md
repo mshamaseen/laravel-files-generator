@@ -11,7 +11,9 @@ Generate any kind of file/s from stubs with only a single command, literally, AN
 
 ## Quickstart
 
-To generate a **single file:** 
+<br>
+
+### To generate a **single file:** 
 
 From command line:
 ```php
@@ -25,8 +27,9 @@ FilesGenerator::stub('PathToYourStubFile.extension')
         ->replace('string to be replaced','The replacement value')
         ->output('outputPath.extension');
 ```
+<br>
 
-To generate **multiple files:**
+### To generate **multiple files:**
 
 From command line:
 ```php
@@ -39,6 +42,20 @@ On runtime:
 FilesGenerator::fromConfigFile('configPath.php');
 ```
 
+<br>
+
+### To **remove generated files** from a config file:
+
+From command line:
+```php
+php artisan ungenerate:config 'pathToYourConfig/configFileName.php'
+```
+
+On runtime:
+
+```php
+FilesUngenerator::fromConfigFile('configPath.php');
+```
 ## Installation
 
 Run:

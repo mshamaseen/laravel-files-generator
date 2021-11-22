@@ -11,5 +11,6 @@ class GeneratorFacade extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return Generator::class; }
+    protected static function getFacadeAccessor(): string
+    { return Generator::class; }
 }

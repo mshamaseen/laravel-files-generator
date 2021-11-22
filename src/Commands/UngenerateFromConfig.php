@@ -2,8 +2,9 @@
 
 namespace Shamaseen\Generator\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
-use Shamaseen\Generator\Generator;
+use Shamaseen\Generator\Ungenerator;
 
 class UngenerateFromConfig extends Command
 {
@@ -19,7 +20,7 @@ class UngenerateFromConfig extends Command
      *
      * @var string
      */
-    protected $description = 'Generate files from config';
+    protected $description = 'Remove files generated before from a config';
 
     /**
      * Create a new command instance.
@@ -33,8 +34,9 @@ class UngenerateFromConfig extends Command
 
     /**
      * Execute the console command.
+     * @throws Exception
      */
-    public function handle(Generator $generator)
+    public function handle(Ungenerator $generator)
     {
         $generator->fromConfigFile($this->argument('config-path'));
     }
