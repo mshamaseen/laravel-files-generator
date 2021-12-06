@@ -1,11 +1,10 @@
 <?php
 
-use JohnDoe\BlogPackage\Tests\TestCase;
+use Shamaseen\Generator\Tests\TestCase;
 use Shamaseen\Generator\Ungenerator;
 
 class GenerateFromConfigTest extends TestCase
 {
-
     private string $configPath;
     private array $configs;
 
@@ -19,7 +18,7 @@ class GenerateFromConfigTest extends TestCase
     /**
      * @throws Exception
      */
-    function test_run_time()
+    public function test_run_time()
     {
         $generator = new \Shamaseen\Generator\Generator();
         $generator->fromConfigFile($this->configPath);
@@ -30,7 +29,7 @@ class GenerateFromConfigTest extends TestCase
     /**
      * @throws Exception
      */
-    function test_ungenerate_run_time()
+    public function test_ungenerate_run_time()
     {
         $ungenerator = new Ungenerator();
         $ungenerator->fromConfigFile($this->configPath);
@@ -39,7 +38,7 @@ class GenerateFromConfigTest extends TestCase
         $this->assertFileDoesNotExist($this->configs[1]['output']);
     }
 
-    function test_command_line()
+    public function test_command_line()
     {
         $this->artisan("generate:config ".$this->configPath)
             ->assertExitCode(0);
@@ -50,7 +49,7 @@ class GenerateFromConfigTest extends TestCase
     /**
      * @throws Exception
      */
-    function test_ungenerate_command_line()
+    public function test_ungenerate_command_line()
     {
         $this->artisan("ungenerate:config ".$this->configPath)
             ->assertExitCode(0);

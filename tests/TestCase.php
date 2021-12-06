@@ -9,7 +9,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     public function setUp(): void
     {
         parent::setUp();
-        // additional setup
+        config()->set('generator.base_path', '');
     }
 
     protected function getPackageProviders($app): array
