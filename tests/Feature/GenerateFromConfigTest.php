@@ -1,6 +1,7 @@
 <?php
 
 use JohnDoe\BlogPackage\Tests\TestCase;
+use Shamaseen\Generator\Ungenerator;
 
 class GenerateFromConfigTest extends TestCase
 {
@@ -12,7 +13,7 @@ class GenerateFromConfigTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->configPath = __DIR__."/../test_config.php";
-        $this->configs = require (__DIR__."/../test_config.php");
+        $this->configs = require(__DIR__."/../test_config.php");
     }
 
     /**
@@ -31,14 +32,15 @@ class GenerateFromConfigTest extends TestCase
      */
     function test_ungenerate_run_time()
     {
-        $ungenerator = new \Shamaseen\Generator\Ungenerator();
+        $ungenerator = new Ungenerator();
         $ungenerator->fromConfigFile($this->configPath);
 
         $this->assertFileDoesNotExist($this->configs[0]['output']);
         $this->assertFileDoesNotExist($this->configs[1]['output']);
     }
 
-    function test_command_line(){
+    function test_command_line()
+    {
         $this->artisan("generate:config ".$this->configPath)
             ->assertExitCode(0);
 
@@ -60,11 +62,15 @@ class GenerateFromConfigTest extends TestCase
     private function checkFiles()
     {
         $this->assertFileExists($this->configs[0]['output']);
-        $this->assertStringEqualsFile($this->configs[0]['output'],
-            "This is only a testing stub file, this first file first value should be changed to 'changed!' and this first file second value should be changed to 'double check'\n");
+        $this->assertStringEqualsFile(
+            $this->configs[0]['output'],
+            "This is only a testing stub file, this first file first value should be changed to 'changed!' and this first file second value should be changed to 'double check'\n"
+        );
 
         $this->assertFileExists($this->configs[1]['output']);
-        $this->assertStringEqualsFile($this->configs[1]['output'],
-            "This is only a testing stub file, this second file first value should be changed to 'changed!' and this second file second value should be changed to 'double check'\n");
+        $this->assertStringEqualsFile(
+            $this->configs[1]['output'],
+            "This is only a testing stub file, this second file first value should be changed to 'changed!' and this second file second value should be changed to 'double check'\n"
+        );
     }
 }

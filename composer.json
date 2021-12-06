@@ -19,7 +19,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Shamaseen\\Generator\\": "src/"
+            "Shamaseen\\Generator\\": "src/",
+            "Shamaseen\\Generator\\Tests": "tests/"
         }
     },
     "autoload-dev": {

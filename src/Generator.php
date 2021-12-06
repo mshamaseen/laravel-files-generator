@@ -6,15 +6,11 @@ use Exception;
 
 class Generator
 {
-    private $content = null;
-    /**
-     * @var string
-     */
-    private $basePath = null;
+    private ?string $content = null;
+    private ?string $basePath = null;
 
     public function __construct()
     {
-
     }
 
     /**
@@ -35,10 +31,12 @@ class Generator
      */
     private function basePath($path): string
     {
-        if(!$this->basePath)
-            $this->basePath = config('generator.base_path');
+        if (!$this->basePath) {
+            $this->basePath = config('generator.base_path', base_path());
+        }
 
-        return $this->basePath."/".$path;
+        // if the base still falsy after setting the config then just return the path
+        return $this->basePath ? $this->basePath."/".$path : $path;
     }
 
     /**
@@ -48,9 +46,9 @@ class Generator
      * @param $value
      * @return $this
      */
-    public function replace($variable,$value): Generator
+    public function replace($variable, $value): Generator
     {
-        $this->content = str_replace($variable,$value,$this->content);
+        $this->content = str_replace($variable, $value, $this->content);
         return $this;
     }
 
@@ -72,11 +70,13 @@ class Generator
      */
     private function validateRequiredConfigs($config)
     {
-        if(!array_key_exists('stub',$config))
+        if (!array_key_exists('stub', $config)) {
             throw new Exception('stub is a required key in the generator configuration');
+        }
 
-        if(!array_key_exists('output',$config))
+        if (!array_key_exists('output', $config)) {
             throw new Exception('stub is a required key in the generator configuration');
+        }
     }
 
     /**
@@ -90,20 +90,18 @@ class Generator
         $configs = require $configPath;
 
         //if not multidimensional array then make it multi
-        if(!isset($configs[0]) || !is_array($configs[0]))
+        if (!isset($configs[0]) || !is_array($configs[0])) {
             $configs = [$configs];
+        }
 
-        foreach ($configs as $config)
-        {
+        foreach ($configs as $config) {
             $this->validateRequiredConfigs($config);
 
             $stub = $this->stub($config['stub']);
 
-            if(isset($config['replace']))
-            {
-                foreach ($config['replace'] as $toReplace => $value)
-                {
-                    $stub->replace($toReplace,$value);
+            if (isset($config['replace'])) {
+                foreach ($config['replace'] as $toReplace => $value) {
+                    $stub->replace($toReplace, $value);
                 }
             }
 
@@ -118,8 +116,9 @@ class Generator
      */
     public function output($path): bool
     {
-        if($this->file_force_contents($this->basePath($path),$this->content) === false)
+        if ($this->fileForceContents($this->basePath($path), $this->content) === false) {
             return false;
+        }
 
         return true;
     }
@@ -131,13 +130,17 @@ class Generator
      * @param $contents
      * @return false|int
      */
-    private function file_force_contents($dir, $contents){
+    private function fileForceContents($dir, $contents)
+    {
         $parts = explode('/', $dir);
         $file = array_pop($parts);
         $dir = '';
 
-        foreach($parts as $part)
-            if(!is_dir($dir .= "/$part")) mkdir($dir);
+        foreach ($parts as $part) {
+            if (!is_dir($dir .= "/$part")) {
+                mkdir($dir);
+            }
+        }
 
         return file_put_contents("$dir/$file", $contents);
     }

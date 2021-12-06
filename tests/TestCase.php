@@ -1,6 +1,6 @@
 <?php
 
-namespace JohnDoe\BlogPackage\Tests;
+namespace Shamaseen\Generator\Tests;
 
 use Shamaseen\Generator\GeneratorServiceProvider;
 
@@ -12,7 +12,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         // additional setup
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             GeneratorServiceProvider::class,
