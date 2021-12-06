@@ -1,9 +1,6 @@
 {
     "name": "shamaseen/laravel-files-generator",
     "description": "Generate any kind of File/s from stubs with only a single command, literally, ANY TYPE.",
-    "tags" : [
-        "stubs", "templates", "generator", "file generator", "generate files"
-    ],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -14,13 +11,13 @@
     ],
     "require": {
         "php": ">=7.4",
-        "illuminate/console": ">5.7",
-        "illuminate/support": ">5.7"
+        "illuminate/console": ">=6.0",
+        "illuminate/support": ">=6.0"
     },
     "autoload": {
         "psr-4": {
             "Shamaseen\\Generator\\": "src/",
-            "Shamaseen\\Generator\\Tests": "tests/"
+            "Shamaseen\\Generator\\Tests\\": "tests/"
         }
     },
     "autoload-dev": {
