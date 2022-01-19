@@ -7,7 +7,6 @@ use Exception;
 class Generator
 {
     private ?string $content = null;
-    private ?string $basePath = null;
 
     public function __construct()
     {
@@ -21,22 +20,21 @@ class Generator
      */
     private function getStub(string $stubPath)
     {
-        return file_get_contents($this->basePath($stubPath));
+        return file_get_contents($stubPath);
     }
 
     /**
-     * Get the base path from the config file or the cache if available
+     * Get absolute Path from a path.
+     *
      * @param $path
      * @return string
      */
-    private function basePath($path): string
+    public function absolutePath($path): string
     {
-        if (!$this->basePath) {
-            $this->basePath = config('generator.base_path', base_path());
-        }
-
-        // if the base still falsy after setting the config then just return the path
-        return $this->basePath ? $this->basePath."/".$path : $path;
+        // if the path is already absolute then return it directly
+        return $path[0] === '/' ?
+            $path :
+            config('generator.base_path', base_path()) . "/" . $path;
     }
 
     /**
@@ -59,7 +57,7 @@ class Generator
      */
     public function stub($stubPath): Generator
     {
-        $this->content = $this->getStub($stubPath);
+        $this->content = $this->getStub($this->absolutePath($stubPath));
         return $this;
     }
 
@@ -116,7 +114,7 @@ class Generator
      */
     public function output($path): bool
     {
-        if ($this->fileForceContents($this->basePath($path), $this->content) === false) {
+        if ($this->fileForceContents($this->absolutePath($path), $this->content) === false) {
             return false;
         }
 
