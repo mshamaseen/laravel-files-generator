@@ -41,12 +41,12 @@ class GenerateFromStub extends Command
 
         $generator->stub($this->argument('stub'));
 
-        if(count($replace) !== count($with))
+        if (count($replace) !== count($with)) {
             throw new \Exception('Replace options count should be equal to the with options count');
+        }
 
-        for ($i = 0; $i < count($replace); $i++)
-        {
-            $generator->replace($replace[$i],$with[$i]);
+        for ($i = 0; $i < count($replace); $i++) {
+            $generator->replace($replace[$i], $with[$i]);
         }
 
         $generator->output($this->argument('output'));
