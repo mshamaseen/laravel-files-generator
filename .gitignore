@@ -3,3 +3,5 @@ composer.lock
 .DS_Store
 .phpunit.result.cache
 /tests/Results
+/.idea
+/.php-cs-fixer.cache
