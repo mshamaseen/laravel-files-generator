@@ -1,5 +1,7 @@
 <?php
 
+namespace Shamaseen\Generator\Tests\Feature;
+
 use Shamaseen\Generator\Tests\TestCase;
 use Shamaseen\Generator\Ungenerator;
 
@@ -8,9 +10,9 @@ class GenerateFromConfigTest extends TestCase
     private string $configPath;
     private array $configs;
 
-    public function __construct(?string $name = null, array $data = [], $dataName = '')
+    public function setUp(): void
     {
-        parent::__construct($name, $data, $dataName);
+        parent::setUp();
         $this->configPath = __DIR__ . "/../test_config.php";
         $this->configs = require(__DIR__ . "/../test_config.php");
     }
