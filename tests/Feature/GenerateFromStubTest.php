@@ -1,5 +1,7 @@
 <?php
 
+namespace Shamaseen\Generator\Tests\Feature;
+
 use Shamaseen\Generator\Tests\TestCase;
 
 class GenerateFromStubTest extends TestCase
