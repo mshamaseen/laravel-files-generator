@@ -1,4 +1,5 @@
 <?php
+
 namespace Shamaseen\Generator\Facades;
 
 use Illuminate\Support\Facades\Facade;
@@ -12,5 +13,7 @@ class UngeneratorFacade extends Facade
      * @return string
      */
     protected static function getFacadeAccessor(): string
-    { return Ungenerator::class; }
+    {
+        return Ungenerator::class;
+    }
 }

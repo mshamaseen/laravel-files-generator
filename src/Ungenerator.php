@@ -6,9 +6,7 @@ use Exception;
 
 class Ungenerator
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Get absolute Path from a path.
@@ -19,9 +17,9 @@ class Ungenerator
     public function absolutePath($path): string
     {
         // if the path is already absolute then return it directly
-        return $path[0] === '/' ?
-            $path :
-            config('generator.base_path', base_path()) . "/" . $path;
+        return $path[0] === '/'
+            ? $path
+            : config('generator.base_path', base_path()) . "/" . $path;
     }
 
     /**

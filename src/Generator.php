@@ -9,9 +9,7 @@ class Generator
 {
     private ?string $content = null;
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Get stub content to generate needed file.
@@ -66,9 +64,9 @@ class Generator
     {
         // if the path is already absolute then return it directly
         return $this->windowsPathToForwardSlash(
-            $this->isAbsolutePath($path) ?
-            $path :
-            config('generator.base_path', base_path()).'/'.$path
+            $this->isAbsolutePath($path)
+            ? $path
+            : config('generator.base_path', base_path()) . '/' . $path
         );
     }
 
@@ -184,6 +182,6 @@ class Generator
             }
         }
 
-        return file_put_contents($finalDir.$file, $contents);
+        return file_put_contents($finalDir . $file, $contents);
     }
 }

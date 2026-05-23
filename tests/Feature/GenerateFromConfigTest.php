@@ -11,8 +11,8 @@ class GenerateFromConfigTest extends TestCase
     public function __construct(?string $name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        $this->configPath = __DIR__."/../test_config.php";
-        $this->configs = require(__DIR__."/../test_config.php");
+        $this->configPath = __DIR__ . "/../test_config.php";
+        $this->configs = require(__DIR__ . "/../test_config.php");
     }
 
     /**
@@ -40,7 +40,7 @@ class GenerateFromConfigTest extends TestCase
 
     public function test_command_line()
     {
-        $this->artisan("generate:config ".$this->configPath)
+        $this->artisan("generate:config " . $this->configPath)
             ->assertExitCode(0);
 
         $this->checkFiles();
@@ -51,7 +51,7 @@ class GenerateFromConfigTest extends TestCase
      */
     public function test_ungenerate_command_line()
     {
-        $this->artisan("ungenerate:config ".$this->configPath)
+        $this->artisan("ungenerate:config " . $this->configPath)
             ->assertExitCode(0);
 
         $this->assertFileDoesNotExist($this->configs[0]['output']);
